@@ -153,7 +153,7 @@ rpo-skills/
 └── skills/
     ├── ac/SKILL.md
     ├── brainstorm-experiments-new/  # 含 LICENSE
-    ├── explore-problems/           # 含 README、agents 與圖片
+    ├── explore-problems/           # 含 README 與 agents
     ├── handoff/                    # 含 agents
     ├── initial-problem-discovery/SKILL.md
     ├── market-segments/            # 含 LICENSE
