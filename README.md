@@ -1,0 +1,192 @@
+# rpo-skills
+
+給 PO（Product Owner，產品負責人）使用的 AI 技能集合，將問題探索、需求整理、優先排序與交付協作中的常用做法，整理成可重複使用的 Agent Skills。
+
+每個技能聚焦一個工作情境，可以依需要個別安裝。首頁以繁體中文整理，各技能保留原始語言，適合與 AI 一起釐清問題、整理資訊、做出決策並推進產品工作。
+
+## 已收錄技能
+
+目前收錄 **13 個技能**，後續可持續擴充。
+
+| 技能 | 識別名稱 | 適用情境 | 主要產出 |
+|---|---|---|---|
+| [探索問題](skills/explore-problems/README.md) | `explore-problems` | 想法還很模糊、不確定問題出在哪，或需要先釐清真正要解決什麼 | 問題定義、事實與假設、待確認事項、下一步驗證方向 |
+| [初始產品問題探索](skills/initial-problem-discovery/SKILL.md) | `initial-problem-discovery` | 整理初始產品定位或精實畫布中的問題與現有替代方案 | 可貼入畫布的問題與現有替代方案、關鍵假設及待驗證事項 |
+| [Handoff（對話交接）](skills/handoff/SKILL.md) | `handoff` | 準備換到新對話或交給另一個 agent，需要保留接續工作的脈絡 | 對話交接文件、既有產出的引用、下一階段重點與建議使用的技能 |
+| [Market Segments（市場分群）](skills/market-segments/SKILL.md) | `market-segments` | 探索潛在市場、辨識目標客群，或評估產品適合服務哪些人 | 3–5 個客群的人口／企業特徵、JTBD、痛點、產品適配與競爭分析 |
+| [新產品驗證實驗](skills/brainstorm-experiments-new/SKILL.md) | `brainstorm-experiments-new` | 驗證新產品構想、測試市場需求，或設計低成本的前型實驗（pretotype） | XYZ 假設、2–3 個實驗方案，以及各實驗的衡量指標與成功門檻 |
+| [價值主張](skills/value-proposition/SKILL.md) | `value-proposition` | 釐清產品定位、目標顧客需求與替代方案的差異 | 七行價值主張及必要的假設與待驗證事項 |
+| [產品目標](skills/product-goals/SKILL.md) | `product-goals` | 制定或檢視可衡量的產品目標 | 以 What、Why、KPI、ROI、Done by 整理的候選目標 |
+| [同步產品脈絡](skills/stp/SKILL.md) | `stp` | 將目前對話中的價值主張、產品目標與市場客群整理至專案背景 | `RPO-CONTEXT.md` 中有狀態與來源的產品脈絡 |
+| [PBI 模板](skills/pbi-template/SKILL.md) | `pbi-template` | 將需求整理為產品待辦項目與故事 | User Story、Job Story 或 System Story，以及驗收標準 |
+| [需求釐清與分析](skills/requirement-refinement/SKILL.md) | `requirement-refinement` | 需求有歧義、需要確認問題與目標，或評估可行方向 | 確認後的需求理解、分析、建議方向與待驗證事項 |
+| [需求拆解](skills/split/SKILL.md) | `split` | 將需求、功能或 Epic 拆成可逐步交付的工作項目 | Backlog 拆解、驗收條件、依賴與交付建議 |
+| [需求排序](skills/priority/SKILL.md) | `priority` | 依產品價值與目標排序需求或 Product Backlog | 具體排序、理由、取捨及待驗證假設 |
+| [驗收標準](skills/ac/SKILL.md) | `ac` | 撰寫、補充或檢視需求的驗收標準 | 以 Given–When–Then 表達的可驗證情境 |
+
+## PO 工作情境與擴充方向
+
+以下是技能集合的擴充方向；目前已提供的技能以「已收錄技能」表格為準。
+
+| 工作情境 | 可加入的技能方向 |
+|---|---|
+| 問題探索與產品發現 | 問題釐清、訪談準備、使用者回饋整理、機會辨識 |
+| 市場研究與客群理解 | 市場分群、客群輪廓、競品分析、市場規模評估 |
+| 需求與範圍管理 | 需求拆解、User Story、驗收條件、PRD、範圍取捨 |
+| 價值判斷與優先排序 | 價值評估、假設排序、Backlog 整理、產品路線圖 |
+| 團隊協作與交付 | Sprint 準備、依賴整理、利害關係人溝通、交付風險盤點 |
+| 驗收與成效追蹤 | 測試情境、成果驗收、指標定義、實驗設計與回顧 |
+| 持續改善 | Retrospective、流程問題整理、產品決策紀錄 |
+
+## 安裝
+
+選擇需要的技能，將 `skills/<技能識別名稱>/` 整個目錄複製到使用工具的技能目錄。保留目錄內的 `SKILL.md`、`agents/` 與其他附帶資源。
+
+### Codex 專案技能
+
+以「探索問題」為例，在下載的儲存庫根目錄執行以下指令，並將 `/path/to/your-project` 換成你的專案路徑：
+
+```bash
+mkdir -p /path/to/your-project/.agents/skills
+cp -R skills/explore-problems /path/to/your-project/.agents/skills/
+```
+
+若要安裝其他技能，將上述來源目錄換成「已收錄技能」表格中對應的 `skills/<技能識別名稱>`。
+
+安裝後，技能檔案應位於：
+
+```text
+你的專案/.agents/skills/explore-problems/SKILL.md
+```
+
+### Claude Code 專案技能
+
+將選定的技能目錄放到使用專案的 `.claude/skills/`。例如：
+
+```text
+你的專案/.claude/skills/explore-problems/SKILL.md
+```
+
+## 專案基本設定
+
+除 `stp` 外，各技能開始工作時會讀取**目前工作專案根目錄**的 `RPO-CONTEXT.md`，作為共用背景；這個位置是使用技能的專案，而不是技能的安裝目錄。沒有該檔案或無法讀取時，技能仍會依原流程執行。當次使用者指示優先；重要資訊若互相衝突，技能會指出並釐清。
+
+可在使用技能的專案根目錄建立 `RPO-CONTEXT.md`，例如：
+
+```markdown
+# 專案基本設定
+
+- 產品與目標：協助小型團隊管理產品需求。
+- 目標使用者：小型團隊的產品負責人。
+- 現況與已知問題：需求分散在多個工具；影響程度待驗證。
+- 常用術語：PBI 指產品待辦項目。
+- 輸出偏好：繁體中文，精簡條列。
+```
+
+內容可依專案調整，並標示假設及待驗證資訊；避免放入密碼、API 金鑰等機密。技能只會取用與當次任務相關的內容。`stp` 則會讀取並更新此檔中的價值主張、產品目標與市場客群；如果檔案含有其他內容，會先詢問如何處理，避免刪除資料。新增讀取專案背景的技能時，應在其 `SKILL.md` 加入相同的讀取規則，讓單獨安裝時仍可使用。
+
+## 使用
+
+「探索問題」安裝後可以直接描述工作情境，或指定要使用的技能。例如：
+
+> 用探索問題幫我釐清：使用者常說流程很麻煩，但我還不知道真正卡在哪裡。
+
+也可以在 Codex 中使用技能識別名稱：
+
+```text
+$explore-problems 先幫我想清楚要解決什麼，再討論做法。
+```
+
+初始產品問題探索適合將模糊的產品構想整理成定位或精實畫布初稿。提供目標使用者、工作情境、遇到的困難及目前做法；資訊不足時，技能會分輪釐清，並區分已知資訊與待驗證假設。撰寫前預設會請你確認摘要，也可以明確授權依現有資訊和合理假設先產出：
+
+```text
+$initial-problem-discovery 我想為小型團隊設計產品需求管理工具。請依目前資訊整理精實畫布的問題與現有替代方案，標示待驗證假設。
+```
+
+Handoff 需要明確呼叫，並可附上下一個對話的工作重點：
+
+```text
+$handoff 下一個對話要接續整理產品需求與驗收條件，請產出交接文件。
+```
+
+交接文件會儲存到作業系統的暫存目錄，引用既有文件、議題或提交，避免重複抄寫內容，並遮蔽敏感資訊。
+
+Market Segments 可用來探索產品的潛在客群。提供產品描述，並附上已有的訪談、研究或客戶資料：
+
+```text
+$market-segments 我們正在設計一款協助小型團隊管理產品需求的工具。請辨識 3–5 個潛在客群，分析各自的 JTBD、痛點與產品適配程度，並標示需要驗證的假設。
+```
+
+新產品驗證實驗可將產品構想轉成可衡量的 XYZ 假設，並設計低成本的需求驗證方式：
+
+```text
+$brainstorm-experiments-new 我們想為小型團隊推出產品需求管理工具。請建立 XYZ 假設，設計 2–3 個低成本驗證實驗，列出衡量指標與成功門檻，並標示尚待驗證的假設。
+```
+
+價值主張技能協助釐清產品、目標顧客及替代方案，再撰寫七行定位。預設會在撰寫前確認摘要；也可明確要求跳過確認並標示假設：
+
+```text
+$value-proposition 為協助小型團隊管理產品需求的工具撰寫價值主張，請先幫我釐清目標顧客與替代方案。
+```
+
+其他技能可依工作階段使用，例如：
+
+```text
+$product-goals 根據目前產品背景，提出可衡量的候選產品目標。
+$stp 將這段對話中的價值主張、產品目標與市場客群同步到專案背景。
+$pbi-template 將這項需求整理成適合的故事與驗收標準。
+$requirement-refinement 先幫我釐清這項需求的問題、目標與限制，確認後再提出建議。
+$split 將這個功能拆成可逐步交付的 backlog 項目。
+$priority 根據產品價值與目標，協助排序這些 backlog 項目。
+$ac 為這個 user story 撰寫可驗證的驗收標準。
+```
+
+`requirement-refinement` 在提出具體建議前會請使用者確認需求理解與評估依據；`priority` 在產出最終排序前會確認價值聲明與產品目標。`pbi-template` 的確認流程及其他技能的詳細使用方式，請參考各自的技能說明。
+
+個別技能的流程與範例，請參考該技能目錄內的說明。
+
+## 儲存庫結構
+
+```text
+rpo-skills/
+├── README.md
+└── skills/
+    ├── ac/SKILL.md
+    ├── brainstorm-experiments-new/  # 含 LICENSE
+    ├── explore-problems/           # 含 README、agents 與圖片
+    ├── handoff/                    # 含 agents
+    ├── initial-problem-discovery/SKILL.md
+    ├── market-segments/            # 含 LICENSE
+    ├── pbi-template/SKILL.md
+    ├── priority/SKILL.md
+    ├── product-goals/SKILL.md
+    ├── requirement-refinement/SKILL.md
+    ├── split/SKILL.md
+    ├── stp/SKILL.md
+    └── value-proposition/SKILL.md
+```
+
+每個技能目錄皆包含 `SKILL.md`。
+
+## 新增技能
+
+1. 在 `skills/` 下建立獨立目錄，使用小寫英文與連字號命名。
+2. 撰寫 `SKILL.md`，包含 `name`、`description`，以及適用情境、工作流程和預期產出。
+3. 視需要加入 `agents/openai.yaml`、範例、參考資料或工具腳本。
+4. 以實際工作情境確認技能能正確觸發、提問與產出，再將它加入上方「已收錄技能」表格。
+
+技能應清楚區分事實、推論與假設，保留使用者的決策權，並在資訊不足時說明仍需確認的事項。
+
+## 來源與致謝
+
+「探索問題」改編自 [grill-boss 繁體中文原始版本](https://github.com/WeAgileio/rpo-skill/tree/b65446a97d55e95e2ad2dcd91bcb40d235ee43c3)，原始方法來自 [onlyLT/grill-boss](https://github.com/onlyLT/grill-boss)。此版本將情境延伸為通用問題探索，保留分輪提問、事實查證與假設清單等做法。
+
+「Handoff」收錄自本專案的既有技能，保留原始內容與明確呼叫設定。
+
+「Market Segments」來自 Paweł Huryn 的 [PM Skills Marketplace](https://github.com/phuryn/pm-skills/tree/main/pm-market-research/skills/market-segments)，收錄本專案已安裝的 `pm-market-research` 2.1.0 版本，保留原始英文內容與參考連結。該技能採用 MIT 授權，授權與著作權聲明見 [skills/market-segments/LICENSE](skills/market-segments/LICENSE)。
+
+「新產品驗證實驗」來自 Paweł Huryn 的 [PM Skills Marketplace](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/brainstorm-experiments-new)，收錄本專案已安裝的 `brainstorm-experiments-new`，保留原始英文內容與參考連結。該技能採用 MIT 授權，授權與著作權聲明見 [skills/brainstorm-experiments-new/LICENSE](skills/brainstorm-experiments-new/LICENSE)。
+
+「需求釐清與分析」的評估維度參考 Paweł Huryn 的 [prioritize-features skill](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/prioritize-features/SKILL.md)，並依本專案需求確認與釐清流程改寫。
+
+「價值主張」依 Geoffrey A. Moore 的定位方法整理，七行格式及參考資料見 [技能說明](skills/value-proposition/SKILL.md)。
