@@ -6,15 +6,17 @@
 
 ## 已收錄技能
 
-目前收錄 **13 個技能**，後續可持續擴充。
+目前收錄 **15 個技能**，後續可持續擴充。
 
 | 技能 | 識別名稱 | 適用情境 | 主要產出 |
 |---|---|---|---|
+| [RPO（技能導航）](skills/rpo/SKILL.md) | `rpo` | 不知道該用哪個技能，或一個產品任務可能對應多個技能 | 選出合適技能與理由；需要時接續執行 |
 | [探索問題](skills/explore-problems/README.md) | `explore-problems` | 想法還很模糊、不確定問題出在哪，或需要先釐清真正要解決什麼 | 問題定義、事實與假設、待確認事項、下一步驗證方向 |
 | [初始產品問題探索](skills/initial-problem-discovery/SKILL.md) | `initial-problem-discovery` | 整理初始產品定位或精實畫布中的問題與現有替代方案 | 可貼入畫布的問題與現有替代方案、關鍵假設及待驗證事項 |
 | [Handoff（對話交接）](skills/handoff/SKILL.md) | `handoff` | 準備換到新對話或交給另一個 agent，需要保留接續工作的脈絡 | 對話交接文件、既有產出的引用、下一階段重點與建議使用的技能 |
 | [Market Segments（市場分群）](skills/market-segments/SKILL.md) | `market-segments` | 探索潛在市場、辨識目標客群，或評估產品適合服務哪些人 | 3–5 個客群的人口／企業特徵、JTBD、痛點、產品適配與競爭分析 |
 | [新產品驗證實驗](skills/brainstorm-experiments-new/SKILL.md) | `brainstorm-experiments-new` | 驗證新產品構想、測試市場需求，或設計低成本的前型實驗（pretotype） | XYZ 假設、2–3 個實驗方案，以及各實驗的衡量指標與成功門檻 |
+| [MVP（最小可行產品）](skills/mvp/SKILL.md) | `mvp` | 準備推出第一個產品，或需要縮小產品範圍 | 單一核心功能、最簡實作方式、短期交付範圍、初始定價與回饋蒐集方式 |
 | [價值主張](skills/value-proposition/SKILL.md) | `value-proposition` | 釐清產品定位、目標顧客需求與替代方案的差異 | 七行價值主張及必要的假設與待驗證事項 |
 | [產品目標](skills/product-goals/SKILL.md) | `product-goals` | 制定或檢視可衡量的產品目標 | 以 What、Why、KPI、ROI、Done by 整理的候選目標 |
 | [同步產品脈絡](skills/stp/SKILL.md) | `stp` | 將目前對話中的價值主張、產品目標與市場客群整理至專案背景 | `RPO-CONTEXT.md` 中有狀態與來源的產品脈絡 |
@@ -41,6 +43,8 @@
 ## 安裝
 
 選擇需要的技能，將 `skills/<技能識別名稱>/` 整個目錄複製到使用工具的技能目錄。保留目錄內的 `SKILL.md`、`agents/` 與其他附帶資源。
+
+若要用 `rpo` 自動挑選並接續執行技能，請一併安裝它可能選用的技能；未安裝的技能只能推薦，無法直接執行。
 
 ### Codex 專案技能
 
@@ -87,6 +91,12 @@ cp -R skills/explore-problems /path/to/your-project/.agents/skills/
 
 ## 使用
 
+不知道該選哪個技能時，可描述目前情境並請 `rpo` 判斷；若同時提出工作目標，它會在選出可用技能後接續處理：
+
+```text
+$rpo 我有個新產品想法，但還不確定該先釐清問題、驗證需求，還是做 MVP。請幫我選合適的技能並開始。
+```
+
 「探索問題」安裝後可以直接描述工作情境，或指定要使用的技能。例如：
 
 > 用探索問題幫我釐清：使用者常說流程很麻煩，但我還不知道真正卡在哪裡。
@@ -123,6 +133,12 @@ $market-segments 我們正在設計一款協助小型團隊管理產品需求的
 $brainstorm-experiments-new 我們想為小型團隊推出產品需求管理工具。請建立 XYZ 假設，設計 2–3 個低成本驗證實驗，列出衡量指標與成功門檻，並標示尚待驗證的假設。
 ```
 
+MVP 技能協助將已準備交付的構想縮小到一件核心工作，先考慮手動或現有工具，再決定需要產品化的部分：
+
+```text
+$mvp 我們想推出協助小型團隊整理需求的第一版產品。請幫我縮小範圍，找出最快能交付並收集回饋的做法。
+```
+
 價值主張技能協助釐清產品、目標顧客及替代方案，再撰寫七行定位。預設會在撰寫前確認摘要；也可明確要求跳過確認並標示假設：
 
 ```text
@@ -157,10 +173,12 @@ rpo-skills/
     ├── handoff/                    # 含 agents
     ├── initial-problem-discovery/SKILL.md
     ├── market-segments/            # 含 LICENSE
+    ├── mvp/SKILL.md
     ├── pbi-template/SKILL.md
     ├── priority/SKILL.md
     ├── product-goals/SKILL.md
     ├── requirement-refinement/SKILL.md
+    ├── rpo/SKILL.md
     ├── split/SKILL.md
     ├── stp/SKILL.md
     └── value-proposition/SKILL.md
@@ -186,6 +204,10 @@ rpo-skills/
 「Market Segments」來自 Paweł Huryn 的 [PM Skills Marketplace](https://github.com/phuryn/pm-skills/tree/main/pm-market-research/skills/market-segments)，收錄本專案已安裝的 `pm-market-research` 2.1.0 版本，保留原始英文內容與參考連結。該技能採用 MIT 授權，授權與著作權聲明見 [skills/market-segments/LICENSE](skills/market-segments/LICENSE)。
 
 「新產品驗證實驗」來自 Paweł Huryn 的 [PM Skills Marketplace](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/brainstorm-experiments-new)，收錄本專案已安裝的 `brainstorm-experiments-new`，保留原始英文內容與參考連結。該技能採用 MIT 授權，授權與著作權聲明見 [skills/brainstorm-experiments-new/LICENSE](skills/brainstorm-experiments-new/LICENSE)。
+
+「MVP」收錄自 Sahil Lavingia 的 [skills/mvp](https://github.com/slavingia/skills/blob/main/skills/mvp/SKILL.md)，保留原始英文內容，並加入本專案共用的 `RPO-CONTEXT.md` 讀取規則。
+
+「RPO」的技能選擇流程參考 [laoyeye](https://github.com/LearnPrompt/laoyeye/blob/main/skills/laoyeye/SKILL.md)，並依本專案的技能與啟動規則重新設計。
 
 「需求釐清與分析」的評估維度參考 Paweł Huryn 的 [prioritize-features skill](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/prioritize-features/SKILL.md)，並依本專案需求確認與釐清流程改寫。
 
