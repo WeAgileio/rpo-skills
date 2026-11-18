@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI 与 Product Owner 协作练习：安装 Skill、定义问题、问题探索、愿景与价值主张、MVP。">
+<title>AI × Product Owner｜Skill 练习指南</title>
+<style>
+:root{--red:#c00000;--bright:#cc0000;--ink:#222;--muted:#666;--line:#e4e4e4;--paper:#f4f4f4;--teal:#347c7b;--navy:#173344;--sage:#d7dfdb}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;color:var(--ink);background:#fff;font:16px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--red);text-underline-offset:4px}button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:4px}button{border:1px solid var(--line);border-radius:5px;padding:8px 14px;background:#fff;color:var(--ink)}button:hover{border-color:var(--red);color:var(--red)}code{font:0.88em/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}p{margin:0 0 14px}h1,h2,h3,h4{line-height:1.35;margin:0}h3{font-size:18px;margin-bottom:14px}h4{font-size:16px;margin-bottom:8px}.topbar{border-top:6px solid var(--red);border-bottom:1px solid var(--line);padding:17px max(28px,calc((100vw - 1320px)/2));display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-size:15px;font-weight:750;letter-spacing:.06em}.brand span{color:var(--red)}.topnote{font-size:13px;color:var(--muted)}.layout{max-width:1320px;margin:auto;display:grid;grid-template-columns:225px minmax(0,1fr);gap:56px;padding:48px 28px 0}.sidebar{align-self:start;position:sticky;top:30px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.12em;color:var(--red);margin-bottom:12px}.sidebar nav{display:grid;gap:7px;margin:20px 0 28px}.sidebar nav a{display:flex;gap:12px;align-items:center;text-decoration:none;color:#555;padding:11px 10px;border-left:3px solid transparent;font-size:14px;line-height:1.5}.sidebar nav a.active{color:var(--red);background:#fbf2f2;border-left-color:var(--red);font-weight:700}.navnum{font:600 12px/1.5 ui-monospace,monospace;color:#777}.sidebar nav a.active .navnum{color:var(--red)}.progress-caption{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}progress{width:100%;height:5px;border:none;background:#e8e8e8;accent-color:var(--red)}progress::-webkit-progress-bar{background:#e8e8e8}progress::-webkit-progress-value{background:var(--red)}.side-help{font-size:12px;color:#777;margin-top:16px}.hero{padding-bottom:36px;border-bottom:1px solid var(--line)}h1{font-size:clamp(30px,3.5vw,47px);font-weight:780;letter-spacing:-.035em;margin:13px 0 20px}h1 span{color:var(--red)}.lead{max-width:730px;font-size:18px;color:#555}.hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:23px}.tag{font-size:12px;border:1px solid var(--line);padding:3px 9px;border-radius:3px}.collab{padding:27px 0 36px}.collab h3{font-size:15px}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow div{background:var(--paper);padding:16px 14px;border-top:2px solid var(--red)}.flow b{display:block;font-size:14px;color:var(--red);margin-bottom:4px}.flow span{font-size:12px;line-height:1.6;color:#666;display:block}.small{font-size:13px;color:var(--muted)}.section{padding:36px 0 42px;border-top:1px solid var(--line)}.section-head{display:flex;gap:19px;align-items:flex-start;margin-bottom:24px}.big-num{font-size:34px;line-height:1.2;font-weight:750;color:var(--red);letter-spacing:-.05em}.section h2{font-size:27px;margin-bottom:5px}.section-sub{font-size:14px;color:#666;margin:0}.cols{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:28px}.steps{list-style:none;padding:0;counter-reset:step;margin:0}.steps li{position:relative;padding-left:32px;margin-bottom:19px;font-size:14px;line-height:1.8}.steps li:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:2px;width:21px;height:21px;display:grid;place-items:center;border:1px solid #ddd;border-radius:50%;font:700 11px/1 sans-serif;color:var(--red)}.steps strong{display:block;font-size:15px;margin-bottom:2px}.prompt{background:var(--paper);border:1px solid #e8e8e8;border-radius:5px;overflow:hidden;margin-bottom:14px}.prompt-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 15px;border-bottom:1px solid #dedede;font-size:12px;font-weight:700}.copy{font-size:12px;padding:4px 10px;white-space:nowrap}.prompt pre,.example pre{white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;font:14px/1.9 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;margin:0;padding:17px 18px}.hint{border-left:3px solid var(--red);padding:10px 14px;background:#fcf5f5;font-size:13px;margin:16px 0}.paths{display:grid;gap:9px;margin:16px 0}.paths div{font-size:12px;padding:10px 12px;background:#f8f8f8}.paths b{display:block;margin-bottom:3px}.paths code{font-size:12px}.skill-label{color:var(--red);font-size:12px;letter-spacing:0;margin:0 0 9px}.result{margin-top:24px;padding:17px 20px;background:#fafafa;border:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}.result p{font-size:14px;margin:0}.result strong{color:var(--red);margin-right:7px}.done{font-size:13px;display:flex;align-items:center;gap:8px;white-space:nowrap;cursor:pointer}.done input{width:18px;height:18px;accent-color:var(--red)}details{border:1px solid var(--line);border-radius:4px;margin-top:14px}summary{padding:12px 15px;font-size:13px;font-weight:650;cursor:pointer}details .inside{padding:0 16px 15px;font-size:13px}.example{border-left:3px solid #bbb;background:#fafafa;margin-top:18px}.example .label{display:block;font-size:11px;color:#666;letter-spacing:.05em;padding:12px 17px 0}.example pre{font-size:13px;padding-top:7px}.checklist{margin:9px 0 0;padding-left:19px;font-size:13px}.checklist li{margin-bottom:4px}.mvp .example{border-color:var(--teal);background:#f1f5f3}.mvp .example .label{color:var(--teal)}.mvp .result{background:#f1f5f3;border-color:var(--sage)}.mvp .result strong{color:var(--teal)}.mvp .hint{border-color:var(--teal);background:#f1f5f3}.handover{margin-top:5px;padding:26px;border:1px solid var(--line);border-top:3px solid var(--red)}.handover-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px}.handover-grid p{font-size:14px;margin:0}.handover-grid b{color:var(--red);margin-right:9px}.sources{margin-top:28px;font-size:12px;color:#777;line-height:1.9}.sources a{color:#666}.author{border-top:1px solid var(--line);margin-top:30px;padding:25px 0 40px;color:#666;font-size:12px}.author h2{font-size:16px;color:#444;margin-bottom:12px}.author p{margin-bottom:10px}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:6px;padding:10px 20px;font-size:13px;z-index:5;box-shadow:0 5px 25px #0002;max-width:90vw;text-align:center}.toast[hidden]{display:none}.skip{position:absolute;top:-60px;left:20px;background:#fff;padding:8px;z-index:10}.skip:focus{top:10px}.footerline{display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);padding:15px 0 28px;font-size:11px;color:#777}
+@media(min-width:1500px){.layout{gap:68px}}
+@media(max-width:1000px){.layout{grid-template-columns:175px minmax(0,1fr);gap:28px}.cols{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.result{grid-template-columns:1fr}.section h2{font-size:25px}}
+@media(max-width:680px){html{scroll-padding-top:16px}.topbar{padding:13px 20px}.topnote{display:none}.layout{display:block;padding:22px 20px 0}.sidebar{position:static;margin-bottom:26px}.sidebar>.eyebrow,.side-help{display:none}.sidebar nav{grid-template-columns:repeat(5,1fr);gap:5px;margin:0 0 12px}.sidebar nav a{display:block;text-align:center;padding:8px 3px;font-size:11px;border-left:0;border-bottom:2px solid transparent}.sidebar nav a.active{border-bottom-color:var(--red)}.navnum{display:block;font-size:11px;margin-bottom:3px}.sidebar nav a span:last-child{display:block}.progress-caption{font-size:11px}.hero{padding-bottom:25px}h1{font-size:34px}.lead{font-size:16px}.hero-meta{margin-top:17px}.flow{gap:8px}.flow div{padding:13px}.section{padding-top:28px}.section-head{gap:14px}.big-num{font-size:30px}.section h2{font-size:23px}.cols{gap:17px}.prompt pre{font-size:13px}.handover{padding:21px}.handover-grid{grid-template-columns:1fr}.footerline{font-size:10px}.result{padding:15px}.done{white-space:normal}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{@page{margin:15mm}body{font-size:11pt}.sidebar,.topbar button,.copy,.toast,.done,.skip,.side-help{display:none!important}.layout{display:block;max-width:none;padding:0}.topbar{padding:10px 0}.hero{padding-top:20px}h1{font-size:30pt}.lead{font-size:13pt}.cols{display:block}.section{break-before:page;padding-top:18px}.prompt,.example,.result,.steps li,.flow{break-inside:avoid}.prompt pre,.example pre{font-size:10pt}.prompt{background:#f4f4f4!important;print-color-adjust:exact}.flow{grid-template-columns:repeat(4,1fr)}details{display:block}.sources,.author{font-size:9pt}.handover{break-before:page}a{color:inherit;text-decoration:none}.footerline{padding-bottom:0}.topnote{display:block}.section h2{font-size:23pt}.steps li{margin-bottom:10px}.hero-meta{margin-top:10px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到指南正文</a>
+<header class="topbar"><div class="brand"><span>WeAgile</span> / PO 练习手册</div><div class="topnote">AI 协作 · 入门练习</div><button type="button" id="print">打印 / 存为 PDF</button></header>
+<div class="layout">
+<aside class="sidebar" aria-label="练习导航">
+<p class="eyebrow">练习顺序</p>
+<nav>
+<a href="#install" class="active"><span class="navnum">01</span><span>安装 Skill</span></a>
+<a href="#define"><span class="navnum">02</span><span>定义问题</span></a>
+<a href="#explore"><span class="navnum">03</span><span>问题探索</span></a>
+<a href="#vision"><span class="navnum">04</span><span>愿景与价值主张</span></a>
+<a href="#mvp"><span class="navnum">05</span><span>MVP</span></a>
+</nav>
+<div class="progress-caption"><span>练习进度</span><span id="progress-text">0 / 5</span></div><progress id="progress" max="5" value="0" aria-label="练习完成进度"></progress>
+<p class="side-help">每完成一步，勾选「已完成」。<br>浏览器允许时，自动保存进度。</p>
+</aside>
+<main id="main">
+<div class="hero">
+<p class="eyebrow">AI × PRODUCT OWNER</p>
+<h1>和 AI 一起，<br><span>把产品想法说清楚</span></h1>
+<p class="lead">选一个你熟悉的产品或服务，依序完成五步练习。每一步的结果，都会成为下一步的输入。</p>
+<div class="hero-meta"><span class="tag">5 个步骤</span><span class="tag">3 个 Skill</span><span class="tag">提示词可直接复制</span><span class="tag">沿用同一个产品案例</span></div>
+</div>
+<section class="collab" aria-labelledby="collab-title">
+<h3 id="collab-title">协作方式：从人的观察出发，由人作出判断</h3>
+<div class="flow"><div><b>01 初步洞察</b><span>你提供观察、问题与想法</span></div><div><b>02 拓展思路</b><span>AI 帮你补充角度与提问</span></div><div><b>03 共同迭代</b><span>你补充信息，和 AI 一起修正</span></div><div><b>04 专业判断</b><span>你决定采用什么、验证什么</span></div></div>
+<p class="small" style="margin:14px 0 0">使用方法：复制提示词 → 把「［ ］」换成自己的内容 → 发送给 AI → 回答追问 → 检查并保存结果。建议在同一工作文件夹、同一对话中完成。</p>
+</section>
+
+<section class="section" id="install" aria-labelledby="install-title">
+<div class="section-head"><div class="big-num">01</div><div><h2 id="install-title">安装 Skill</h2><p class="section-sub">目标：让本地 AI 工具找到并读取三个练习技能。</p></div></div>
+<div class="cols"><div>
+<h3>按顺序操作</h3>
+<ol class="steps"><li><strong>打开本地 AI 工具</strong>准备好 Codex、Claude Code，或其他能操作本地文件并支持 Skill 的 AI 工具。先完成工具安装和登录。</li><li><strong>选择练习文件夹</strong>在电脑上新建「AI-PO练习」文件夹，并在 AI 工具中将它打开为当前项目。</li><li><strong>发送安装提示词</strong>复制本节的安装提示词。要安装到其他位置，可使用下方「指定文件夹」版本。</li><li><strong>检查安装结果</strong>确认三个 Skill 各自有 <code>SKILL.md</code>，相关资源也已保留。再发送验证提示词。</li></ol>
+<div class="paths"><div><b>Codex 项目技能目录</b><code>项目/.agents/skills/技能名称/SKILL.md</code></div><div><b>Claude Code 项目技能目录</b><code>项目/.claude/skills/技能名称/SKILL.md</code></div></div>
+<p class="small">Skill 是一套可重复使用的工作说明。安装后，AI 会按其中的流程提问和整理结果。仅把文件下载到电脑，还需要确认工具能读取。</p>
+</div><div>
+<div class="prompt"><div class="prompt-head"><span>安装到当前工作文件夹</span><button class="copy" data-copy="p-install" type="button">复制提示词</button></div><pre id="p-install">请检查这个 GitHub 项目的内容与安装说明：
+https://github.com/WeAgileio/rpo-skills/
+
+先确认当前工作文件夹的路径和我使用的 AI 工具，再将以下三个 Skill 安装到该工具的项目技能目录：
+1. initial-problem-discovery
+2. value-proposition
+3. mvp
+
+请保留每个技能的完整目录与附带资源，确认 SKILL.md 存在，并检查当前工具能否读取。
+完成后列出实际安装路径与调用方式；遇到问题请说明。</pre></div>
+<details><summary>需要安装到指定文件夹？</summary><div class="inside"><p>把路径换成你电脑上实际存在的文件夹，然后发送。</p><div class="prompt"><div class="prompt-head"><span>指定文件夹版本</span><button class="copy" data-copy="p-path" type="button">复制提示词</button></div><pre id="p-path">请检查 https://github.com/WeAgileio/rpo-skills/ 的内容与安装说明。
+目标工作文件夹：［填入文件夹的完整路径］
+我使用的工具：［Codex / Claude Code / 其他工具名称］
+
+请将 initial-problem-discovery、value-proposition、mvp 安装到这个工作文件夹内、该工具支持的项目技能目录。
+保留完整目录与附带资源，验证 SKILL.md 存在且工具能够读取，并告诉我实际安装位置与调用方式。</pre></div></div></details>
+<div class="prompt" style="margin-top:14px"><div class="prompt-head"><span>安装后验证</span><button class="copy" data-copy="p-verify" type="button">复制提示词</button></div><pre id="p-verify">请检查当前项目中的 initial-problem-discovery、value-proposition、mvp。
+逐一读取 SKILL.md，列出实际路径，并用一句话说明各自的用途。
+无法读取的技能，请列出名称和原因。</pre></div>
+</div></div>
+<details><summary>工具找不到 Skill，怎么办？</summary><div class="inside"><ol class="checklist"><li>请 AI 确认当前工作文件夹与安装文件夹一致。</li><li>检查是否放入该工具支持的技能目录，并保留每个技能的子文件夹。</li><li>在同一项目中新建对话，再发送验证提示词。</li><li>仍无法读取时，把错误信息交给 AI，要求按仓库安装说明检查。</li></ol><p style="margin:12px 0 0">本指南用「请使用已安装的…Skill」调用。Codex 也可使用 <code>$initial-problem-discovery</code> 等名称。PPT 中的「Initial Problem Discovery」对应 <code>initial-problem-discovery</code>；不要把带空格的标题当作通用命令。</p></div></details>
+<div class="result"><p><strong>完成检查</strong>三个 Skill 均有实际路径，AI 能读取并说明用途。</p><label class="done"><input type="checkbox" data-step="install">安装已完成</label></div>
+</section>
+
+<section class="section" id="define" aria-labelledby="define-title">
+<div class="section-head"><div class="big-num">02</div><div><h2 id="define-title">定义问题</h2><p class="section-sub">目标：先由团队写出具体问题与现有替代方案。讨论 8 分钟。</p></div></div>
+<div class="cols"><div><h3>按顺序操作</h3>
+<ol class="steps"><li><strong>选一个产品或服务</strong>确定谁在什么情境下使用它，先选团队熟悉的对象。</li><li><strong>用简短文字写问题</strong>写出遇到的困难与影响。例如「同事反复追问进度」，而非「缺一个看板」。</li><li><strong>列出现有替代方案</strong>一起头脑风暴，尽量列全目前使用的系统、表格、邮件、电话或人工做法。</li><li><strong>保存并分享初稿</strong>填好问题记录表，保留团队原话。暂时不确定的内容标为「假设」，下一步交给 AI 探索。</li></ol>
+<div class="hint">这一步先由你和团队讨论，不需要调用 Skill。</div>
+</div><div>
+<div class="prompt"><div class="prompt-head"><span>问题记录表 · 复制到笔记中填写</span><button class="copy" data-copy="p-define" type="button">复制记录表</button></div><pre id="p-define">产品或服务：［名称］
+目标使用者：［谁］
+使用情境：［什么时候、要完成什么事］
+
+问题（Problem）：
+［遇到什么困难，造成什么影响］
+
+现有替代方案（Existing Alternatives）：
+［现在用什么工具、流程或人工做法处理］
+
+已知依据：［团队观察、经验或已有资料］
+尚未确认：［目前只是猜测的部分］</pre></div>
+<div class="example"><span class="label">授信系统示例 · 练习情境，待验证</span><pre>目标使用者：分行与授信中心的业务、征信及审查人员。
+问题：进度不透明，反复录入和查询，跨部门补材料慢。
+现有替代方案：结合现有授信系统、Excel、邮件和电话跟进。</pre></div>
+</div></div>
+<div class="result"><p><strong>本步产出</strong>一份问题初稿与现有替代方案清单，团队能简短说明。</p><label class="done"><input type="checkbox" data-step="define">定义已完成</label></div>
+</section>
+
+<section class="section" id="explore" aria-labelledby="explore-title">
+<div class="section-head"><div class="big-num">03</div><div><p class="skill-label">SKILL / initial-problem-discovery</p><h2 id="explore-title">问题探索</h2><p class="section-sub">目标：找出遗漏的问题，分清已知信息与待验证假设。</p></div></div>
+<div class="cols"><div><h3>按顺序操作</h3>
+<ol class="steps"><li><strong>贴入上一步的记录</strong>打开已安装 Skill 的项目，复制本节提示词，贴入问题记录。</li><li><strong>回答 AI 的追问</strong>根据团队观察或目前判断回答。不知道时直接说「目前不确定，请标为假设」。</li><li><strong>核对摘要</strong>检查使用者、情境、问题和现有做法。有误就修正，正确再请 AI 整理初稿。</li><li><strong>由团队决定保留什么</strong>删除不符合实际的推测，保存问题、现有替代方案与待验证事项。</li></ol>
+<div class="hint">AI 提出的新角度是探索线索。没有依据的内容，继续保留「待验证」标记。</div>
+</div><div>
+<div class="prompt"><div class="prompt-head"><span>问题探索提示词</span><button class="copy" data-copy="p-explore" type="button">复制提示词</button></div><pre id="p-explore">请使用已安装的 initial-problem-discovery Skill，帮我检查还有哪些问题没考虑到。
+
+以下是团队的问题初稿：
+［贴入上一步的问题记录］
+
+请先聚焦问题与现有替代方案。需要补充信息时，每次问一个关键问题。
+请区分已知信息、推论与待验证假设，不编造客户反馈或数字。
+和我核对摘要后，用简体中文整理：
+1. 问题（Problem）
+2. 现有替代方案（Existing Alternatives）
+3. 关键假设与待验证事项</pre></div>
+<div class="prompt"><div class="prompt-head"><span>AI 理解有误时，继续追问</span><button class="copy" data-copy="p-correct" type="button">复制提示词</button></div><pre id="p-correct">请修正：［指出理解有误的地方］。
+我能确认的是：［已有观察或依据］。
+目前仍不确定的是：［未知事项］。
+请据此更新问题与现有替代方案，并保留待验证标记。</pre></div>
+</div></div>
+<div class="result"><p><strong>本步产出</strong>团队确认的问题与现有做法，以及需要向谁验证哪些假设。</p><label class="done"><input type="checkbox" data-step="explore">探索已完成</label></div>
+</section>
+
+<section class="section" id="vision" aria-labelledby="vision-title">
+<div class="section-head"><div class="big-num">04</div><div><p class="skill-label">SKILL / value-proposition</p><h2 id="vision-title">愿景与价值主张</h2><p class="section-sub">目标：说清楚为谁、解决什么问题，以及与现有做法的差异。</p></div></div>
+<div class="cols"><div><h3>按顺序操作</h3>
+<ol class="steps"><li><strong>先写七行初稿</strong>根据问题探索结果，填写本节的七行模板。聚焦一个主要客群。</li><li><strong>让 Skill 检查并优化</strong>发送下方提示词，附上问题探索结果与七行初稿。</li><li><strong>核对价值与差异</strong>回答追问并确认摘要。检查产品能力、比较对象和差异有没有依据。</li><li><strong>读给组员听</strong>确认别人能用一两句话复述。保存七行版本，并保留待验证事项。</li></ol>
+<div class="example"><span class="label">授信协作平台 · 愿景草案，能力与效果待验证</span><pre>对于业务量大、跨部门交接频繁的分行与授信中心人员，
+他们需要掌握授信进度和待补材料，减少录入、查询与催件时间，
+企业授信工作平台
+是一种整合进度、材料与操作流程的协作平台，
+能够帮助同事掌握业务状态、改善交接并及早发现流程瓶颈，
+不同于现有授信系统、Excel、邮件和电话分头跟进的做法，
+我们的产品拟用看板集中展示进度和待补材料，并逐步实现数据自动填充与审核校验，让同事有更多时间审查业务。</pre></div>
+</div><div>
+<div class="prompt"><div class="prompt-head"><span>七行模板 · 先填一版</span><button class="copy" data-copy="p-seven" type="button">复制模板</button></div><pre id="p-seven">对于［目标客户］，
+他们［有某项困扰、需求或期待］，
+［产品或服务名称］
+是一种［概括描述］，
+能够［解决关键问题的能力］，
+不同于［替代产品、服务或现有做法］，
+我们的产品［关键功能、必要配套与差异］。</pre></div>
+<div class="prompt"><div class="prompt-head"><span>价值主张提示词</span><button class="copy" data-copy="p-value" type="button">复制提示词</button></div><pre id="p-value">请使用已安装的 value-proposition Skill，优化以下愿景与价值主张。
+
+问题探索结果：
+［贴入确认后的问题、现有替代方案与关键假设］
+
+七行初稿：
+［贴入填好的七行模板］
+
+请先核对目标客户、需求、产品能力、替代方案与主要差异，需要时向我提问。
+确认后，用简体中文输出简洁的七行版本，并列出必要的假设和待验证事项。不要把计划中的能力或预期效果写成已实现的事实。</pre></div>
+<p class="small">七行模板沿用教材，并参考 Geoffrey Moore 的定位方法。愿景可以描述未来方向，下一步再决定 MVP 先验证哪部分价值。</p>
+</div></div>
+<div class="result"><p><strong>本步产出</strong>七行愿景与价值主张，清楚说明客群、需求、产品与差异。</p><label class="done"><input type="checkbox" data-step="vision">价值主张已完成</label></div>
+</section>
+
+<section class="section mvp" id="mvp" aria-labelledby="mvp-title">
+<div class="section-head"><div class="big-num">05</div><div><p class="skill-label">SKILL / mvp</p><h2 id="mvp-title">MVP 设计与规划</h2><p class="section-sub">目标：用最少投入测试关键假设，让早期用户体验核心价值。</p></div></div>
+<div class="cols"><div><h3>按顺序操作</h3>
+<ol class="steps"><li><strong>选定最先解决的问题</strong>从前面的结果中，挑出一个优先问题与一个关键假设，说明用户要完成什么任务。</li><li><strong>请 AI 比较做法并缩小范围</strong>附上价值主张、时间、人力与工具限制，发送本节提示词。</li><li><strong>确定第一版做什么</strong>检查是否能用人工或现有工具试点。写清核心流程、本次范围与暂不做的功能。</li><li><strong>先定标准，再准备试点</strong>约定对象、期间、负责人、当前基准与成功标准。试点后据结果决定继续、调整或停止。</li></ol>
+<div class="hint">MVP = 最小可行产品。核心范围要足以测试关键假设；共享表格和人工服务也可以支持试点。</div>
+<div class="example"><span class="label">授信进度示例 · 假设情境，并非已验证成果</span><pre>问题：同事反复追问申请进度。
+假设：能自行查询状态，有助减少追问。
+做法：一个部门用共享表格，由专人更新状态。
+本次范围：查询申请状态。
+暂不做：自动填充、审核校验、跨系统整合。
+验证：比较试点前后每件申请的追问次数，并确认同事能否顺利找到状态。
+开始前补齐：试点期间、改进目标、负责人和数据更新规则。</pre></div>
+</div><div>
+<div class="prompt"><div class="prompt-head"><span>MVP 提示词</span><button class="copy" data-copy="p-mvp" type="button">复制提示词</button></div><pre id="p-mvp">请使用已安装的 mvp Skill，根据以下情况，帮我确定第一版 MVP 的具体范围。请用简体中文回答。
+
+目标使用者：［谁先试用］
+优先问题：［这次先解决什么］
+价值主张：［贴入上一步结果］
+关键假设：［这次最需要验证什么］
+现有做法与工具：［目前如何处理］
+时间与人力限制：［可投入的资源］
+使用场景：［企业内部使用 / 对外销售］
+
+请比较可选做法，优先考虑人工或现有工具，输出：
+1. 第一版只做的一件核心工作
+2. 用户完成任务的流程与最简实现方式
+3. 本次范围与暂不做的功能
+4. 试点对象、期间、负责人及数据更新规则
+5. 当前基准、成功标准和反馈方式
+6. 什么结果支持继续、调整或停止
+
+对外销售时讨论初始定价；内部使用时聚焦采用意愿与投入。缺少的数据请标为待补，建议的目标请标为待团队确认。</pre></div>
+<p class="small">若 AI 给出的范围太大，可继续说：「请缩小到一个部门、一个核心任务，并优先用现有工具。说明这版能验证什么。」</p>
+</div></div>
+<div class="result"><p><strong>本步产出</strong>一份可试点的 MVP 方案，写清对象、核心范围与验证标准。</p><label class="done"><input type="checkbox" data-step="mvp">MVP 规划已完成</label></div>
+</section>
+
+<section class="handover" aria-labelledby="handover-title"><h3 id="handover-title">练习结束，保存这四份结果</h3><div class="handover-grid"><p><b>01</b>团队最初的问题与现有做法</p><p><b>02</b>问题探索结果与待验证假设</p><p><b>03</b>七行愿景与价值主张</p><p><b>04</b>MVP 范围、试点与验证标准</p></div><p class="small" style="margin:16px 0 0">团队分享时，说明 AI 补充了什么、你们修正了什么，以及最终决定下一步验证什么。</p></section>
+<div class="sources"><strong>教材与参考</strong><br>练习顺序与案例依据《AI练习.pptx》整理；定义问题的 8 分钟讨论沿用原教材。为便于操作，补充了记录表、验证提示词与完成检查。安装目录和技能名称依据 <a href="https://github.com/WeAgileio/rpo-skills/">rpo-skills 仓库说明</a>核对（2026-11-18）。<br>技能说明：<a href="https://github.com/WeAgileio/rpo-skills/blob/main/skills/initial-problem-discovery/SKILL.md">问题探索</a> · <a href="https://github.com/WeAgileio/rpo-skills/blob/main/skills/value-proposition/SKILL.md">价值主张与模板来源</a> · <a href="https://github.com/WeAgileio/rpo-skills/blob/main/skills/mvp/SKILL.md">MVP</a>。网页可离线阅读；安装 Skill 与使用 AI 需具备相应工具及访问条件。</div>
+<footer class="author">
+<h2><strong>作者簡介</strong></h2>
+<p>范育銘是 Scrum Inc. 認證培訓師及台灣敏捷協會常務理事，曾陪伴不同規模的企業推動數位與組織轉型。我協助主管對齊目標、釐清決策邊界，建立回饋與協作機制，讓主管能放心授權，團隊也能承擔決策與成果責任。</p>
+<p>我也持續在 <a href="https://weagile.io/">WeAgile</a> 分享組織變革與敏捷實務文章，並提供公開課、企業內訓及教練顧問服務，幫助企業把自組織與自管理，從理念轉化為真正能運作的管理能力。</p>
+</footer>
+<!-- 作者簡介 Markdown 原文，完整保留 -->
+<script type="text/markdown" id="author-markdown">## **作者簡介**
+范育銘是 Scrum Inc. 認證培訓師及台灣敏捷協會常務理事，曾陪伴不同規模的企業推動數位與組織轉型。我協助主管對齊目標、釐清決策邊界，建立回饋與協作機制，讓主管能放心授權，團隊也能承擔決策與成果責任。
+我也持續在 [WeAgile](https://weagile.io/) 分享組織變革與敏捷實務文章，並提供公開課、企業內訓及教練顧問服務，幫助企業把自組織與自管理，從理念轉化為真正能運作的管理能力。</script>
+<div class="footerline"><span>AI × PRODUCT OWNER / SKILL 练习指南</span><a href="#main">回到开头 ↑</a></div>
+</main></div>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<script>
+(()=>{
+'use strict';
+const toast=document.querySelector('.toast');let timer;
+function notify(text){toast.textContent=text;toast.hidden=false;clearTimeout(timer);timer=setTimeout(()=>{toast.hidden=true;},3500);}
+document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{
+ const source=document.getElementById(button.dataset.copy),text=source.textContent;let copied=false;
+ try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);copied=true;}}catch(e){}
+ if(!copied){const input=document.createElement('textarea');input.value=text;input.style.position='fixed';input.style.left='-9999px';document.body.append(input);input.select();try{copied=document.execCommand('copy');}catch(e){}input.remove();button.focus();}
+ if(copied){notify('已复制。粘贴后，请替换［ ］中的内容。');}
+ else{const range=document.createRange();range.selectNodeContents(source);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);notify('请按 Ctrl+C 或 ⌘C 复制选中的内容。');}
+}));
+const checks=[...document.querySelectorAll('[data-step]')],key='weagile-ai-po-guide-progress-v1';
+let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){}
+checks.forEach(c=>{c.checked=saved[c.dataset.step]===true;});
+function update(){const count=checks.filter(c=>c.checked).length;document.getElementById('progress').value=count;document.getElementById('progress-text').textContent=count+' / 5';}
+checks.forEach(c=>c.addEventListener('change',()=>{update();try{localStorage.setItem(key,JSON.stringify(Object.fromEntries(checks.map(c=>[c.dataset.step,c.checked]))));}catch(e){notify('当前浏览器无法保存进度，本次页面仍可勾选。');}}));update();
+const links=[...document.querySelectorAll('nav a')],sections=[...document.querySelectorAll('main>.section')];
+function markActive(id){links.forEach(a=>{const active=a.hash==='#'+id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});}
+let scheduled=false;function onScroll(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{let current=sections[0];for(const s of sections){if(s.getBoundingClientRect().top<=window.innerHeight*.3)current=s;}markActive(current.id);scheduled=false;});}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+document.getElementById('print').addEventListener('click',()=>window.print());
+let openDetails=[];window.addEventListener('beforeprint',()=>{openDetails=[...document.querySelectorAll('details')].filter(d=>!d.open);openDetails.forEach(d=>d.open=true);});window.addEventListener('afterprint',()=>openDetails.forEach(d=>d.open=false));
+})();
+</script>
+</body>
+</html>

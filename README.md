@@ -4,6 +4,14 @@
 
 每個技能聚焦一個工作情境，可以依需要個別安裝。首頁以繁體中文整理，各技能保留原始語言，適合與 AI 一起釐清問題、整理資訊、做出決策並推進產品工作。
 
+## AI 與 Product Owner 協作練習指南
+
+[線上閱讀指南](https://weagileio.github.io/rpo-skills/) · [HTML 原始檔](guide/index.html)
+
+指南提供安裝 Skill、定義問題、問題探索、願景與價值主張、MVP 五步練習，支援複製提示詞、記錄進度與列印。
+
+網頁原始檔位於 `guide/index.html`。GitHub Pages 的發布來源設為 **GitHub Actions**；推送 `guide/` 或部署工作流程的變更至 `main` 後，會自動部署 `guide/` 內容，也可在 Actions 手動執行 `Deploy guide to GitHub Pages`。
+
 ## 已收錄技能
 
 目前收錄 **15 個技能**，後續可持續擴充。
