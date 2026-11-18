@@ -220,3 +220,9 @@ rpo-skills/
 「需求釐清與分析」的評估維度參考 Paweł Huryn 的 [prioritize-features skill](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/prioritize-features/SKILL.md)，並依本專案需求確認與釐清流程改寫。
 
 「價值主張」依 Geoffrey A. Moore 的定位方法整理，七行格式及參考資料見 [技能說明](skills/value-proposition/SKILL.md)。
+
+## Release Notes
+
+### v0.1.0 — 2026-11-18
+
+- 指南的「安装到当前工作文件夹」提示詞改為安裝倉庫中的全部 Skill，並保留安裝路徑確認、完整資源保留與安裝後讀取檢查要求。
