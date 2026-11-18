@@ -10,7 +10,7 @@
 
 指南提供安裝 Skill、定義問題、問題探索、願景與價值主張、MVP 五步練習，支援複製提示詞、記錄進度與列印。
 
-網頁原始檔位於 `guide/index.html`。GitHub Pages 的發布來源設為 **GitHub Actions**；推送 `guide/` 或部署工作流程的變更至 `main` 後，會自動部署 `guide/` 內容，也可在 Actions 手動執行 `Deploy guide to GitHub Pages`。
+網頁原始檔位於 `guide/index.html`。GitHub Pages 的發布來源設為 **GitHub Actions**；只有發布 GitHub Release 時，才會執行 `Deploy guide to GitHub Pages`，部署該 Release 標籤對應的 `guide/` 內容。一般推送至 `main`、僅推送標籤或儲存 Release 草稿皆不會觸發部署。
 
 ## 已收錄技能
 
